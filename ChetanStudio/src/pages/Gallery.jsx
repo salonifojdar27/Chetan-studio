@@ -1,33 +1,46 @@
 import React from "react";
 import { motion } from "framer-motion";
+import banner4 from "../assets/banner4.jpeg"
+import img1 from "../assets/galleryImg1.jpg";
+import img2 from "../assets/galleryImg2.jpg";
+import img3 from "../assets/galleryImg3.jpg";
+import img4 from "../assets/galleryImg4.webp";
+import img5 from "../assets/galleryImg5.jpg";
+import img6 from "../assets/galleryImg6.avif";
+import img7 from "../assets/galleryImg7.avif";
+import img8 from "../assets/galleryImg8.jpg";
+import img9 from "../assets/galleryImg9.jpg";
+import img10 from "../assets/galleryImg10.avif";
+import img11 from "../assets/galleryImg11.webp";
+import img12 from "../assets/galleryImg12.jpg";
+
 
 export default function Gallery() {
   const photos = [
-    { src: "../assets/img2.jpg", title: "Wedding Moments" },
-    { src: "/photos/2.jpg", title: "Bride Portrait" },
-    { src: "/photos/3.jpg", title: "Couple Shoot" },
-    { src: "/photos/4.jpg", title: "Candid Shot" },
-    { src: "/photos/5.jpg", title: "Haldi Ceremony" },
-    { src: "/photos/6.jpg", title: "Engagement" },
-    { src: "/photos/7.jpg", title: "Outdoor Shoot" },
-    { src: "/photos/8.jpg", title: "Traditional Look" },
+    { src: img1, title: "Wedding Moments", colSpan: 1, rowSpan: 2 },
+    { src: img2, title: "Bride Portrait", colSpan: 1, rowSpan: 1 },
+    { src: img3, title: "Couple Shoot", colSpan: 1, rowSpan: 2 },
+    { src: img4, title: "Candid Shot", colSpan: 2, rowSpan: 1 },
+    { src: img5, title: "Haldi Ceremony", colSpan: 1, rowSpan: 1 },
+    { src: img6, title: "Engagement", colSpan: 1, rowSpan: 1 },
+    { src: img7, title: "Outdoor Shoot", colSpan: 2, rowSpan: 1 },
+    { src: img8, title: "Traditional Look", colSpan: 1, rowSpan: 1 },
+    { src: img9, title: "Traditional Look", colSpan: 1, rowSpan: 1 },
+    { src: img12, title: "Haldi Ceremony", colSpan: 1, rowSpan: 1 },
+    { src: img10, title: "Engagement", colSpan: 2, rowSpan: 1 },
+    { src: img11, title: "Outdoor Shoot", colSpan: 1, rowSpan: 1 },
   ];
 
   return (
-    <div className="bg-cream min-h-screen pb-20">
+    <div className="bg-amber-50 min-h-screen pb-20 pt-20">
 
       {/* HERO BANNER */}
       <div className="relative w-full h-[55vh] md:h-[65vh] mb-14">
         <img
-          src="/banner-gallery.jpg" // change this banner
+          src={banner4}
           alt="Gallery Banner"
-          className="w-full h-full object-cover"
+           className="w-full h-[280px] md:h-[450px] object-cover shadow-lg"
         />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <h1 className="text-white text-4xl md:text-6xl font-bold tracking-wide">
-            Our Gallery
-          </h1>
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
@@ -50,6 +63,10 @@ export default function Gallery() {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
               className="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer"
+              style={{
+                gridColumn: `span ${photo.colSpan}`,
+                gridRow: `span ${photo.rowSpan}`,
+              }}
             >
               <img
                 src={photo.src}
@@ -85,3 +102,7 @@ export default function Gallery() {
     </div>
   );
 }
+
+
+
+
