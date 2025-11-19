@@ -4,7 +4,7 @@ import banner from "../assets/bannerImg1.jpg"
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-amber-50 pt-20 pb-20">
+    <div className="min-h-screen bg-[#F3EDE4]  pt-20 pb-20">
 
       {/* Banner Section with Animation */}
       <motion.div

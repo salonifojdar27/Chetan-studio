@@ -31,7 +31,7 @@ export default function Gallery() {
   ];
 
   return (
-    <div className="bg-amber-50 min-h-screen pb-20 pt-20">
+    <div className="bg-[#F3EDE4] min-h-screen pb-20 pt-20">
 
       {/* HERO BANNER */}
       <div className="relative w-full h-[55vh] md:h-[65vh] mb-14 overflow-hidden">

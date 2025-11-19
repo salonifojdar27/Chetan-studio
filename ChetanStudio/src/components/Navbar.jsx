@@ -1,28 +1,122 @@
 
-import { motion } from "framer-motion"
+// import { motion } from "framer-motion"
+// import { Link } from "react-router-dom";
+// import logo from "../assets/logo.png"
+// const Navbar = () => {
+
+//     return (
+
+//         <motion.nav initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }} className=" w-full top-0 z-50 bg-amber-50/70 backdrop-blur-md shadow-md">
+//             <div className="max-w-7xl mx-auto flex justify-between items-center p-4 h-18">
+//                 <Link to="/"><img src={logo} className="object-contain w-22" /></Link>
+//                 <div className="flex gap-6 text-lg text-bronze font-semibold ">
+//                     <Link to="/" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110 ">Home</Link>
+//                     <Link to="/gallery" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110 ">Gallery</Link>
+//                     <Link to="/stories" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110 ">Stories</Link>
+//                     <Link to="/about" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110 ">About</Link>
+//                     <Link to="/contact" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110" >Contact</Link>
+//                 </div>
+//                 <div className='flex gap-5'>
+//                     <p> instagram</p>
+//                     <p>facebook</p>
+//                 </div>
+//             </div>
+//         </motion.nav>
+//     )
+// }
+// export default Navbar
+
+
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"
+import { FaInstagram, FaFacebook } from "react-icons/fa";
+import logo from "../assets/logo.png";
+
 const Navbar = () => {
+    const [open, setOpen] = useState(false);
 
     return (
-
-        <motion.nav initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }} className=" w-full top-0 z-50 bg-amber-50/70 backdrop-blur-md shadow-md">
+        <motion.nav
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="w-full top-0 z-50 bg-amber-50/70 backdrop-blur-md shadow-md"
+        >
             <div className="max-w-7xl mx-auto flex justify-between items-center p-4 h-18">
-                <Link to="/"><img src={logo} className="object-contain w-22" /></Link>
-                <div className="flex gap-6 text-lg text-bronze font-semibold ">
-                    <Link to="/" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110 ">Home</Link>
-                    <Link to="/gallery" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110 ">Gallery</Link>
-                    <Link to="/stories" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110 ">Stories</Link>
-                    <Link to="/about" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110 ">About</Link>
-                    <Link to="/contact" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110" >Contact</Link>
-                </div>
-                <div className='flex gap-5'>
-                    <p> instagram</p>
-                    <p>facebook</p>
-                </div>
-            </div>
-        </motion.nav>
-    )
-}
 
-export default Navbar
+                {/* Logo (same size as your original) */}
+                <Link to="/">
+                    <img src={logo} className="object-contain w-22" />
+                </Link>
+
+                {/* Desktop Menu */}
+                <div className="hidden md:flex gap-6 text-lg text-bronze font-semibold">
+                    <Link to="/" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110">Home</Link>
+                    <Link to="/gallery" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110">Gallery</Link>
+                    <Link to="/stories" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110">Stories</Link>
+                    <Link to="/about" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110">About</Link>
+                    <Link to="/contact" className="transition-transform duration-300 hover:text-[#b48b76] hover:scale-110">Contact</Link>
+                </div>
+
+                {/* Social Icons (Desktop Only) */}
+                <div className="hidden md:flex gap-5 text-2xl">
+                    <a
+                        href="#"
+                        className="transition duration-300"
+                        style={{ color: "#b48b76" }}
+                    >
+                        <FaInstagram className="hover:text-black transition" />
+                    </a>
+
+                    <a
+                        href="#"
+                        className="transition duration-300"
+                        style={{ color: "#b48b76" }}
+                    >
+                        <FaFacebook className="hover:text-black transition" />
+                    </a>
+                </div>
+
+                {/* Mobile Hamburger */}
+                <button
+                    onClick={() => setOpen(!open)}
+                    className="md:hidden text-3xl text-bronze"
+                >
+                    {open ? "✕" : "☰"}
+                </button>
+
+            </div>
+
+            {/* Mobile Menu */}
+            {open && (
+                <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="md:hidden bg-amber-50/90 backdrop-blur-md shadow-md p-6 flex flex-col gap-6 text-lg font-semibold text-bronze"
+                >
+                    <Link to="/" onClick={() => setOpen(false)}>Home</Link>
+                    <Link to="/gallery" onClick={() => setOpen(false)}>Gallery</Link>
+                    <Link to="/stories" onClick={() => setOpen(false)}>Stories</Link>
+                    <Link to="/about" onClick={() => setOpen(false)}>About</Link>
+                    <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
+
+                    <div className="pt-4 border-t border-bronze/40 flex gap-4 text-2xl">
+                        <FaInstagram
+                            style={{ color: "#b48b76" }}
+                            className="hover:text-black transition"
+                        />
+                        <FaFacebook
+                            style={{ color: "#b48b76" }}
+                            className="hover:text-black transition"
+                        />
+                    </div>
+
+
+                </motion.div>
+            )}
+        </motion.nav>
+    );
+};
+
+export default Navbar;

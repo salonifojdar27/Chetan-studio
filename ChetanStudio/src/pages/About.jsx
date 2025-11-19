@@ -24,7 +24,7 @@ export default function About() {
     },
   ];
   return (
-    <div className="bg-amber-50 min-h-screen pt-12 pb-20">
+    <div className="bg-[#F3EDE4] min-h-screen pt-20 pb-20">
 
       {/* HERO BANNER */}
       <div className="relative w-full h-[55vh] md:h-[65vh] mb-14">
