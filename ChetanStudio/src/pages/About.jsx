@@ -1,69 +1,7 @@
-// import React from "react";
-// import { motion } from "framer-motion";
-
-// export default function About() {
-//   const services = [
-//     {
-//       title: "PHOTOGRAPHY",
-//       desc: "Candid photography focusing on natural moments & traditional full-event coverage.",
-//     },
-//     {
-//       title: "VIDEOGRAPHY",
-//       desc: "Cinematic videography capturing emotions, candid moments & full wedding story.",
-//     },
-//     {
-//       title: "PHOTOBOOKS & ALBUMS",
-//       desc: "Handcrafted wedding albums designed with premium quality & custom layouts.",
-//     },
-//     {
-//       title: "POST-PRODUCTION",
-//       desc: "Creative editing services for cinematic teaser, short film & traditional video.",
-//     },
-//   ];
-
-//   return (
-//     <div className="bg-stone-50 py-20 px-6 md:px-16 lg:px-24">
-
-//       {/* Section Title */}
-//       <motion.h1
-//         initial={{ opacity: 0, y: 20 }}
-//         whileInView={{ opacity: 1, y: 0 }}
-//         className="text-7xl md:text-[70px] font-bold text-center text-gray-300 tracking-wide mb-10"
-//       >
-//         OUR SERVICES
-//       </motion.h1>
-
-//       {/* Cards Grid */}
-//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
-//         {services.map((service, i) => (
-//           <motion.div
-//             key={i}
-//             initial={{ opacity: 0, y: 30 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.5 }}
-//             className="bg-white p-8 shadow-xl rounded-xl border border-gray-100 text-center"
-//           >
-//             <h2 className="text-lg font-extrabold text-gray-800 tracking-wide">
-//               {service.title}
-//             </h2>
-
-//             <div className="w-10 h-[2px] bg-gray-300 mx-auto my-3"></div>
-
-//             <p className="text-gray-600 text-sm leading-relaxed">
-//               {service.desc}
-//             </p>
-//           </motion.div>
-//         ))}
-//       </div>
-
-//     </div>
-//   );
-// }
-
-
 import React from "react";
 import { motion } from "framer-motion";
 import banner3 from "../assets/banner3.jpg"
+import banner5  from "../assets/banner5.avif"
 
 export default function About() {
 
@@ -129,10 +67,11 @@ export default function About() {
           <motion.img
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            src="/about-photo.jpg" // change this
+            src={banner5}
             alt="About"
-            className="rounded-xl shadow-xl w-full h-[400px] object-cover"
+            className="rounded-xl shadow-xl w-full h-[400px] object-contain bg-white p-2"
           />
+
 
           {/* TEXT */}
           <motion.div

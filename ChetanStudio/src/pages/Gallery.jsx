@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import banner4 from "../assets/banner4.jpeg"
 import img1 from "../assets/galleryImg1.jpg";
 import img2 from "../assets/galleryImg2.jpg";
 import img3 from "../assets/galleryImg3.jpg";
@@ -13,7 +12,7 @@ import img9 from "../assets/galleryImg9.jpg";
 import img10 from "../assets/galleryImg10.avif";
 import img11 from "../assets/galleryImg11.webp";
 import img12 from "../assets/galleryImg12.jpg";
-
+import gallerybanner1 from "../assets/galleryBanner1.jpg"
 
 export default function Gallery() {
   const photos = [
@@ -35,13 +34,14 @@ export default function Gallery() {
     <div className="bg-amber-50 min-h-screen pb-20 pt-20">
 
       {/* HERO BANNER */}
-      <div className="relative w-full h-[55vh] md:h-[65vh] mb-14">
+      <div className="relative w-full h-[55vh] md:h-[65vh] mb-14 overflow-hidden">
         <img
-          src={banner4}
+          src={gallerybanner1}
           alt="Gallery Banner"
-           className="w-full h-[280px] md:h-[450px] object-cover shadow-lg"
+          className="w-full h-full object-cover object-center"
         />
       </div>
+
 
       <div className="max-w-7xl mx-auto px-6">
 
@@ -93,7 +93,7 @@ export default function Gallery() {
             href="/contact"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="bg-black text-white px-8 py-3 rounded-full text-lg hover:bg-gray-800 transition"
+            className=" bg-[#e27b94] text-white px-8 py-3 rounded-full text-lg hover:bg-gray-800 transition"
           >
             Book Your Shoot
           </motion.a>
