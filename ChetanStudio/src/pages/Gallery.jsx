@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+
 import img1 from "../assets/galleryImg1.jpg";
 import img2 from "../assets/galleryImg2.jpg";
 import img3 from "../assets/galleryImg3.jpg";
@@ -12,9 +13,24 @@ import img9 from "../assets/galleryImg9.jpg";
 import img10 from "../assets/galleryImg10.avif";
 import img11 from "../assets/galleryImg11.webp";
 import img12 from "../assets/galleryImg12.jpg";
-import gallerybanner1 from "../assets/galleryBanner1.jpg"
+
+import banner1 from "../assets/galleryBanner1.jpg";
+import banner2 from "../assets/GalleryBanner2.webp";
+import banner3 from "../assets/GalleryBanner8.png";
+import banner4 from "../assets/GalleryBanner4.jpg";
 
 export default function Gallery() {
+  const banners = [banner1, banner2, banner3, banner4];
+  const [current, setCurrent] = useState(0);
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % banners.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [banners.length]);
+
   const photos = [
     { src: img1, title: "Wedding Moments", colSpan: 1, rowSpan: 2 },
     { src: img2, title: "Bride Portrait", colSpan: 1, rowSpan: 1 },
@@ -33,15 +49,30 @@ export default function Gallery() {
   return (
     <div className="bg-[#F3EDE4] min-h-screen pb-20 pt-20">
 
-      {/* HERO BANNER */}
-      <div className="relative w-full h-[55vh] md:h-[65vh] mb-14 overflow-hidden">
-        <img
-          src={gallerybanner1}
+      {/* SLIDER BANNER */}
+      <div className="relative w-full h-[55vh] md:h-[65vh] overflow-hidden mb-14">
+        <motion.img
+          key={current}
+          src={banners[current]}
           alt="Gallery Banner"
-          className="w-full h-full object-cover object-center"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="w-full h-full object-cover"
         />
-      </div>
 
+        {/* Navigation Dots */}
+        <div className="absolute bottom-4 w-full flex justify-center gap-3">
+          {banners.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${i === current ? "bg-white scale-125" : "bg-white/50"
+                }`}
+            ></div>
+          ))}
+        </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-6">
 
@@ -74,10 +105,10 @@ export default function Gallery() {
                 className="w-full h-[380px] object-cover transform group-hover:scale-110 transition-all duration-700"
               />
 
-              {/* Dark Overlay on Hover */}
+              {/* Dark Overlay */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
-              {/* Title on Hover */}
+              {/* Title */}
               <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <h3 className="text-xl font-semibold tracking-wide">
                   {photo.title}
@@ -102,7 +133,5 @@ export default function Gallery() {
     </div>
   );
 }
-
-
 
 

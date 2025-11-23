@@ -7,10 +7,12 @@ import Stories from "../src/pages/Stories"
 import About from "../src/pages/About"
 import Contact from "../src/pages/Contact"
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>

@@ -6,6 +6,7 @@ import homeImg3 from "../assets/homeImg3.jpg";
 import weddingVideo from "../assets/HomeVideo.mp4";
 import MissionSection from "../components/MissionSection";
 import HomeBanner from "../assets/HomeBanner2.webp";
+import HomeGallery from "../components/HomeGallery";
 
 export default function HomePage() {
 
@@ -34,7 +35,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="w-full bg-[#F3EDE4] pb-20  pt-18">
+    <div className="w-full bg-[#F3EDE4] pb-20 pt-20">
       {/* Banner Section with Animation */}
       <motion.div
         className="w-full"
@@ -45,7 +46,7 @@ export default function HomePage() {
         <img
           src={HomeBanner}
           alt="banner"
-          className="w-full h-[280px] md:h-[450px] object-cover shadow-lg mt-5"
+          className="w-full h-[280px] md:h-[450px] object-cover shadow-lg"
         />
       </motion.div>
 
@@ -54,7 +55,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center text-5xl md:text-6xl font-serif tracking-wide pt-12 "
+        className="text-center text-5xl md:text-6xl font-serif tracking-wide pt-25"
       >
         CINEMATIC <span className="font-light">Journeys</span>
       </motion.h1>
@@ -111,6 +112,8 @@ export default function HomePage() {
         </div>
       </div>
 
+        <HomeGallery />
+     
     </div >
   );
 }

@@ -1,30 +1,38 @@
 import React from "react";
 import { motion } from "framer-motion";
-import banner3 from "../assets/banner3.jpg"
-import banner5 from "../assets/banner5.avif"
+import banner3 from "../assets/banner3.jpg";
+import banner5 from "../assets/banner5.avif";
+
+// ICONS
+import { FaCameraRetro, FaVideo, FaBookOpen, FaMagic } from "react-icons/fa";
 
 export default function About() {
-
   const services = [
     {
       title: "PHOTOGRAPHY",
       desc: "Candid photography focusing on natural moments & traditional full-event coverage.",
+      icon: <FaCameraRetro className="text-5xl mx-auto mb-4 text-[#C6A667] hover:text-black transition" />,
     },
     {
       title: "VIDEOGRAPHY",
       desc: "Cinematic videography capturing emotions, candid moments & full wedding story.",
+      icon: <FaVideo className="text-5xl mx-auto mb-4 text-[#C6A667] hover:text-black transition" />,
     },
     {
       title: "PHOTOBOOKS & ALBUMS",
       desc: "Handcrafted wedding albums designed with premium quality & custom layouts.",
+      icon: <FaBookOpen className="text-5xl mx-auto mb-4 text-[#C6A667] hover:text-black transition" />,
     },
     {
       title: "POST-PRODUCTION",
       desc: "Creative editing services for cinematic teaser, short film & traditional video.",
+      icon: <FaMagic className="text-5xl mx-auto mb-4 text-[#C6A667] hover:text-black transition" />,
     },
   ];
+
+
   return (
-    <div className="bg-[#F3EDE4] min-h-screen pt-20 pb-20">
+    <div className="bg-[#F3EDE4] min-h-screen pt-15 pb-20">
 
       {/* HERO BANNER */}
       <div className="relative w-full h-[55vh] md:h-[65vh] mb-14">
@@ -60,7 +68,7 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* ABOUT IMAGE + TEXT  (SIDE BY SIDE) */}
+        {/* ABOUT IMAGE + TEXT */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-20">
 
           {/* IMAGE */}
@@ -71,7 +79,6 @@ export default function About() {
             alt="About"
             className="rounded-xl shadow-xl w-full h-[400px] object-contain bg-white p-2"
           />
-
 
           {/* TEXT */}
           <motion.div
@@ -110,14 +117,19 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white p-8 shadow-xl rounded-xl border border-gray-100 text-center"
+              className="bg-white p-8 shadow-xl rounded-xl border border-gray-100 text-center hover:shadow-2xl transition"
             >
+              {/* ICON */}
+              {service.icon}
+
+              {/* TITLE */}
               <h2 className="text-lg font-extrabold text-gray-800 tracking-wide">
                 {service.title}
               </h2>
 
               <div className="w-10 h-[2px] bg-gray-300 mx-auto my-3"></div>
 
+              {/* DESCRIPTION */}
               <p className="text-gray-600 text-sm leading-relaxed">
                 {service.desc}
               </p>
@@ -125,8 +137,8 @@ export default function About() {
           ))}
         </div>
 
-
       </div>
     </div>
   );
 }
+
