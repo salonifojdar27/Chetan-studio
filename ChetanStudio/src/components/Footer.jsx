@@ -35,6 +35,11 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/stories" className="hover:text-white transition cursor-pointer">
+                                Stories
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/contact" className="hover:text-white transition cursor-pointer">
                                 Contact
                             </Link>
