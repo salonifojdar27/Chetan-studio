@@ -17,33 +17,39 @@ export default function StoriesSection() {
   };
 
   return (
-    <div className="w-full bg-[#F3EDE4] py-16 px-6 flex flex-col items-center ">
+    <div className="w-full bg-[#F3EDE4] py-16 px-4 sm:px-6 lg:px-10 flex flex-col items-center">
 
       {/* HEADER */}
-      <div className="w-full max-w-6xl flex items-center justify-between mt-20">
+      <div className="w-full max-w-6xl flex flex-col sm:flex-row items-start sm:items-center justify-between mt-10 sm:mt-20 gap-4 sm:gap-0">
+
         <div className="flex items-center gap-4">
-          <h1 className="text-4xl font-serif italic">The STORIES</h1>
-          <div className="h-px w-48 bg-black"></div>
+          <h1 className="text-3xl sm:text-4xl font-serif italic">The STORIES</h1>
+          <div className="h-px w-24 sm:w-48 bg-black"></div>
         </div>
 
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 max-w-[280px] sm:max-w-none">
           Where Every Frame Tells Infinite Stories
         </p>
       </div>
 
       {/* SLIDER */}
-      <div className="relative w-full max-w-6xl mt-12 overflow-hidden">
+      <div className="relative w-full max-w-6xl mt-10 overflow-hidden">
 
         <motion.div
-          animate={{ x: -index * 330 }}
+          animate={{ x: -index * (window.innerWidth < 640 ? 200 : 330) }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="flex gap-10"
+          className="flex gap-6 sm:gap-10"
         >
           {images.map((src, i) => (
             <motion.img
               key={i}
               src={src}
-              className="w-[300px] h-[420px] rounded-xl object-cover shadow-md"
+              className="
+                w-[160px] h-[240px]
+                sm:w-[250px] sm:h-[360px]
+                lg:w-[300px] lg:h-[420px]
+                rounded-xl object-cover shadow-md
+              "
               whileHover={{ scale: 1.08, y: -8 }}
               transition={{ duration: 0.4 }}
             />
@@ -53,8 +59,8 @@ export default function StoriesSection() {
         {/* ARROW */}
         <button
           onClick={nextSlide}
-          className="absolute right-[-25px] top-1/2 -translate-y-1/2
-                     w-9 h-9 bg-white shadow-md rounded-full
+          className="absolute right-2 sm:right-[-25px] top-1/2 -translate-y-1/2
+                     w-8 h-8 bg-white shadow-md rounded-full
                      flex items-center justify-center text-lg
                      hover:scale-110 transition"
         >
@@ -63,11 +69,11 @@ export default function StoriesSection() {
       </div>
 
       {/* CAPTION */}
-      <p className="text-xs text-gray-700 mt-4 max-w-6xl">
+      <p className="text-xs text-gray-700 mt-4 max-w-6xl text-center sm:text-left">
         Dreams Painted In The Sky, Hopes Reflected In The Stars.
       </p>
 
-      <button className="mt-10 border border-black px-8 py-2 text-sm 
+      <button className="mt-8 border border-black px-8 py-2 text-sm 
                          hover:bg-black hover:text-white transition">
         Explore All
       </button>
